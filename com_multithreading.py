@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from time import time
 
 url_list = [
-     'https://images.pexels.com/photos/305821/pexels-photo-305821.jpeg',
+     'https://www.irib.org.br/app/webroot/files/downloads/images/82505707_2272119153087587_6591185429532246016_n.jpg',
      'https://images.pexels.com/photos/509922/pexels-photo-509922.jpeg',
      'https://images.pexels.com/photos/325812/pexels-photo-325812.jpeg',
      'https://images.pexels.com/photos/1252814/pexels-photo-1252814.jpeg',
@@ -34,9 +34,6 @@ processes = []
 with ThreadPoolExecutor(max_workers=10) as executor:
     for url in url_list:
         processes.append(executor.submit(download, url))
-
-for task in as_completed(processes):
-    print(task.result())
 
 
 print(f'Tempo gasto: {time() - start}')
