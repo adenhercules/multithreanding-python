@@ -2,7 +2,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from time import time
 
-url_list = [
+lista_urls = [
      'https://www.irib.org.br/app/webroot/files/downloads/images/82505707_2272119153087587_6591185429532246016_n.jpg',
      'https://images.pexels.com/photos/509922/pexels-photo-509922.jpeg',
      'https://images.pexels.com/photos/325812/pexels-photo-325812.jpeg',
@@ -21,19 +21,19 @@ url_list = [
 ]
 
 def download(url):
-    img_data = requests.get(url).content
-    img_name = url.split('/')[4]
-    img_name = f'{img_name}.jpg'
-    with open(img_name, 'wb') as img_file:
-        img_file.write(img_data)
-        print(f'downloading {img_name}')
+    img_tamanho = requests.get(url).content
+    img_nome = url.split('/')[4]
+    img_nome = f'{img_nome}.jpg'
+    with open(img_nome, 'wb') as img_arq:
+        img_arq.write(img_tamanho)
+        print(f'downloading {img_nome}')
 
-start = time()
+inicioContadorTempo = time()
 processes = []
 
 with ThreadPoolExecutor(max_workers=10) as executor:
-    for url in url_list:
+    for url in lista_urls:
         processes.append(executor.submit(download, url))
 
 
-print(f'Tempo gasto: {time() - start}')
+print(f'Tempo gasto: {time() - inicioContadorTempo}')
