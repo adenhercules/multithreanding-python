@@ -1,3 +1,3 @@
 # multithreanding-python
 
-  ## programas apresentados no meetup
+  ## programas apresentados na PyRO
